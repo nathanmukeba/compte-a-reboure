@@ -1,0 +1,114 @@
+  <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"> <!-- Définition de l'encodage des caractères pour permettre l'affichage des caractères spéciaux -->
+  <title>Compte à Rebours Simple</title> <!-- Titre de la page affiché dans l'onglet du navigateur -->
+
+  <style>
+    /* Style de base pour la page */
+    body {
+      font-family: Arial, sans-serif; /* Police utilisée */
+      background-color: #222; /* Couleur de fond sombre */
+      color: white; /* Couleur du texte */
+      text-align: center; /* Centrer le texte */
+      padding-top: 50px; /* Espace au-dessus du contenu */
+    }
+
+    /* Style du conteneur principal du compte à rebours */
+    .countdown {
+      display: flex; /* Utilisation de Flexbox pour disposition horizontale */
+      justify-content: center; /* Centrer les éléments horizontalement */
+      gap: 20px; /* Espacement entre les boîtes */
+    }
+
+    /* Style de chaque boîte (jours, heures, minutes, secondes) */
+    .box {
+      background-color: #333; /* Couleur de fond plus claire pour contraster */
+      padding: 20px; /* Espacement intérieur */
+      border-radius: 10px; /* Bords arrondis */
+      box-shadow: 3px 3px 10px #000; /* Ombre portée pour donner du relief */
+    }
+
+    /* Style du chiffre dans chaque boîte */
+    .number {
+      font-size: clamp(30px, 5vw, 60px); /* Taille adaptative (responsive) */
+      font-weight: bold; /* Texte en gras */
+    }
+
+    /* Style du texte "Jours", "Heures", etc. */
+    .label {
+      font-size: clamp(14px, 2vw, 20px); /* Taille adaptative également */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Titre principal affiché sur la page -->
+  <h1>Compte à Rebours jusqu'à l'Événement</h1>
+
+  <!-- Conteneur du compte à rebours -->
+  <div class="countdown">
+    <!-- Boîte pour les jours -->
+    <div class="box">
+      <div class="number" id="days">00</div> <!-- Chiffre des jours -->
+      <div class="label">Jours</div> <!-- Étiquette "Jours" -->
+    </div>
+
+    <!-- Boîte pour les heures -->
+    <div class="box">
+      <div class="number" id="hours">00</div> <!-- Chiffre des heures -->
+      <div class="label">Heures</div> <!-- Étiquette "Heures" -->
+    </div>
+
+    <!-- Boîte pour les minutes -->
+    <div class="box">
+      <div class="number" id="minutes">00</div> <!-- Chiffre des minutes -->
+      <div class="label">Minutes</div> <!-- Étiquette "Minutes" -->
+    </div>
+
+    <!-- Boîte pour les secondes -->
+    <div class="box">
+      <div class="number" id="seconds">00</div> <!-- Chiffre des secondes -->
+      <div class="label">Secondes</div> <!-- Étiquette "Secondes" -->
+    </div>
+  </div>
+
+  <script>
+    // Fonction pour mettre à jour le compte à rebours chaque seconde   0
+    function miseAJour() {
+      // Définir la date cible de l'événement
+      var dateEvenement = new Date("2025-12-31T23:59:59").getTime();
+
+      // Obtenir la date et l'heure actuelles
+      var maintenant = new Date().getTime();
+
+      // Calculer le temps restant en millisecondes
+      var tempsRestant = dateEvenement - maintenant;
+
+      // Extraire les secondes restantes
+      var secondes = Math.floor((tempsRestant / 1000) % 60);
+
+      // Extraire les minutes restantes
+      var minutes = Math.floor((tempsRestant / (1000 * 60)) % 60);
+
+      // Extraire les heures restants                    
+ var heure =Math . floor ((tempsRestant /(1000 * 60 * 60)) % 24) ;
+      // Extraire les jours restants
+      var jours = Math.floor(tempsRestant / (1000 * 60 * 60 * 24));
+
+      // Mettre à jour le contenu HTML avec les nouvelles valeurs
+      document.getElementById("days").innerText = jours;
+      document.getElementById("hours").innerText = heures;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = secondes;
+    }
+
+    // Appeler la fonction miseAJour toutes les 1000 millisecondes (1 seconde)
+    setInterval(miseAJour, 1000);
+
+    // Appeler immédiatement la fonction au chargement de la page
+    miseAJour();
+  </script>
+
+</body>
+</html>
