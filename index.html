@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8"> <!-- Définition de l'encodage des caractères pour permettre l'affichage des caractères spéciaux -->
@@ -74,7 +74,7 @@
   </div>
 
   <script>
-    // Fonction pour mettre à jour le compte à rebours chaque seconde   0
+    // Fonction pour mettre à jour le compte à rebours chaque seconde
     function miseAJour() {
       // Définir la date cible de l'événement
       var dateEvenement = new Date("2025-12-31T23:59:59").getTime();
@@ -91,8 +91,9 @@
       // Extraire les minutes restantes
       var minutes = Math.floor((tempsRestant / (1000 * 60)) % 60);
 
-      // Extraire les heures restants                    
- var heure =Math . floor ((tempsRestant /(1000 * 60 * 60)) % 24) ;
+      // Extraire les heures restantes
+      var heures = Math.floor((tempsRestant / (1000 * 60 * 60)) % 24);
+
       // Extraire les jours restants
       var jours = Math.floor(tempsRestant / (1000 * 60 * 60 * 24));
 
